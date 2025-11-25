@@ -47,7 +47,7 @@ jobs:
         uses: actions/configure-pages@v4  # 更新到 v4 版本
         
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # 更新到 v3 版本，解决弃用问题
+        uses: actions/upload-pages-artifact@v3  # 更新到 v3 版本
         with:
           # Upload dist repository
           path: './dist'
@@ -55,3 +55,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3  # 更新到 v3 版本
+        # 添加环境变量解决找不到制品的问题
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
