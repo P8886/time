@@ -29,32 +29,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4  # 更新到 v4 版本
+        uses: actions/checkout@v4
 
       - name: Set up Node
-        uses: actions/setup-node@v4  # 更新到 v4 版本
+        uses: actions/setup-node@v4
         with:
-          node-version: 20  # 更新到更新的 LTS 版本
+          node-version: 20
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        # 使用 npm ci 而不是 npm install，以获得更可重现的构建
         
       - name: Build
         run: npm run build
         
+      # 验证构建产物
+      - name: Verify build output
+        run: |
+          echo "检查构建产物..."
+          ls -la dist/
+          if [ ! -f "dist/index.html" ]; then
+            echo "❌ 错误：构建产物不完整，缺少 index.html"
+            exit 1
+          fi
+          echo "✅ 构建产物验证通过"
+        
       - name: Setup Pages
-        uses: actions/configure-pages@v4  # 更新到 v4 版本
+        uses: actions/configure-pages@v4
         
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # 更新到 v3 版本
+        uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist repository
+          # 确保上传正确的构建目录
           path: './dist'
           
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3  # 更新到 v3 版本
-        # 添加环境变量解决找不到制品的问题
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/deploy-pages@v4
