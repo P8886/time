@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import WorkTimeQuery from '@/views/WorkTimeQuery.vue'
 import RecordTime from '@/views/RecordTime.vue'
 import SalaryCalculator from '@/views/SalaryCalculator.vue'
@@ -28,7 +28,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 

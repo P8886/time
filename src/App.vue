@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-// App.vue 主应用组件
+// App.vue 根应用组件
 </script>
 
 <style>
