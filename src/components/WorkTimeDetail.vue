@@ -171,6 +171,7 @@ import { ArrowDown } from '@element-plus/icons-vue'
 import { getTaskNameColor } from '@/utils/common'
 import { getWeekDay } from '@/utils/common'
 import { checkIPWhitelist } from '@/utils/security'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   visible: {
@@ -184,6 +185,9 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:visible', 'update-checked-hours'])
+
+// 获取路由实例
+const router = useRouter()
 
 // 响应式数据
 const dialogVisible = ref(false)
@@ -417,10 +421,11 @@ const handleTaskNameClick = async (event, taskId) => {
       return
     }
     
-    // 构建工时登记页面URL
-    const recordTimeUrl = `/record?taskId=${taskId}`
-    // 在新标签页中打开
-    window.open(recordTimeUrl, '_blank')
+    // 使用 router.push 进行页面导航
+    router.push({
+      path: '/record',
+      query: { taskId }
+    })
   }
 }
 
