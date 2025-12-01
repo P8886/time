@@ -195,6 +195,10 @@ import { Plus, Delete } from '@element-plus/icons-vue'
 import { getWorkLogsByTaskId, addOrUpdateWorkLogs, getChargeUserList } from '@/api/worklog'
 import { getUrlParams } from '@/utils/common'
 import { initSecurity } from '@/utils/security'
+import { useRouter, useRoute  } from 'vue-router'
+// 获取路由实例
+const router = useRouter()
+const route = useRoute()
 
 // 响应式数据
 const taskId = ref('')
@@ -473,7 +477,8 @@ onMounted(async () => {
     
     // 如果安全检查通过，初始化页面数据
     if (securityResult) {
-      const params = getUrlParams()
+      // const params = getUrlParams()
+      const params = route.query
       taskId.value = params.taskId
       
       // 如果有taskId，尝试加载工时数据

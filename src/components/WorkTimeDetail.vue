@@ -421,11 +421,14 @@ const handleTaskNameClick = async (event, taskId) => {
       return
     }
     
-    // 使用 router.push 进行页面导航
-    router.push({
+    // 使用 router.resolve 解析路由后在新窗口打开
+    const route = router.resolve({
       path: '/record',
       query: { taskId }
     })
+    
+    // 在新标签页中打开
+    window.open(route.href, '_blank')
   }
 }
 
