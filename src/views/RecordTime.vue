@@ -15,7 +15,7 @@
         <h1>访问受限</h1>
         <h2>IP地址未授权</h2>
         <p>抱歉，您的IP地址不在访问白名单中，无法访问此页面。</p>
-        <el-button type="danger" @click="window.close()">关闭页面</el-button>
+        <el-button type="danger" @click="closeWindow">关闭页面</el-button>
       </div>
     </div>
     
@@ -492,6 +492,13 @@ onMounted(async () => {
     securityPassed.value = false
   }
 })
+
+// 关闭窗口方法
+const closeWindow = () => {
+  if (window?.close) {
+    window.close()
+  }
+}
 </script>
 
 <style scoped>
