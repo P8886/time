@@ -533,7 +533,7 @@ const exportResults = () => {
   }
   
   // 创建CSV内容
-  const headers = ['姓名', '等级', '总工时', '基础工资', '绩效工资', 'Bug奖惩', '奖惩组成', '总工资']
+  const headers = ['姓名', '等级', '总工时', '基础工资', '绩效工资', 'Bug奖惩', '总工资']
   const csvContent = [
     headers.join(','),
     ...calculatedSalaries.value.map(item => [
