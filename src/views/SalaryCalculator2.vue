@@ -8,12 +8,12 @@
       <el-button type="primary" @click="loadUserData" :loading="loading">
         <el-icon><Refresh /></el-icon> 加载用户数据
       </el-button>
-      <el-button type="success" @click="calculateAllSalaries" :disabled="!hasData" :loading="calculating">
+      <!-- <el-button type="success" @click="calculateAllSalaries" :disabled="!hasData" :loading="calculating">
         <el-icon><Money /></el-icon> 计算所有工资
-      </el-button>
-      <el-button type="info" @click="exportResults" :disabled="!hasCalculated">
+      </el-button> -->
+      <!-- <el-button type="info" @click="exportResults" :disabled="!hasCalculated">
         <el-icon><Download /></el-icon> 导出结果
-      </el-button>
+      </el-button> -->
     </div>
 
     <div class="stats-cards" v-if="hasData">
@@ -108,10 +108,10 @@
               <el-icon style="margin-right: 4px;"><View /></el-icon>
               详情
             </el-button>
-            <el-button type="warning" size="small" @click="recalculate(scope.row)" round style="margin-left: 5px;">
+            <!-- <el-button type="warning" size="small" @click="recalculate(scope.row)" round style="margin-left: 5px;">
               <el-icon style="margin-right: 4px;"><Refresh /></el-icon>
               重算
-            </el-button>
+            </el-button> -->
           </template>
         </el-table-column>
       </el-table>
@@ -459,6 +459,7 @@ const getSalaryTagType = (salary) => {
 // 初始化
 onMounted(() => {
   loadUserData()
+  calculateAllSalaries()
 })
 </script>
 

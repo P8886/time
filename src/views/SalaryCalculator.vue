@@ -50,13 +50,6 @@
               ¥{{ scope.row.performancePay.toFixed(2) }}
             </template>
           </el-table-column>
-          <el-table-column prop="bugBonus" label="Bug奖惩" width="120" sortable>
-            <template #default="scope">
-              <span :style="{ color: scope.row.bugBonus >= 0 ? '#67c23a' : '#f56c6c' }">
-                {{ scope.row.bugBonus >= 0 ? '+' : '' }}¥{{ scope.row.bugBonus.toFixed(2) }}
-              </span>
-            </template>
-          </el-table-column>
           <el-table-column label="奖惩组成" min-width="200">
             <template #default="scope">
               <div class="bonus-breakdown">
@@ -73,6 +66,13 @@
                   无奖惩
                 </span>
               </div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="bugBonus" label="累计奖惩" width="120" sortable>
+            <template #default="scope">
+              <span :style="{ color: scope.row.bugBonus >= 0 ? '#67c23a' : '#f56c6c' }">
+                {{ scope.row.bugBonus >= 0 ? '+' : '' }}¥{{ scope.row.bugBonus.toFixed(2) }}
+              </span>
             </template>
           </el-table-column>
           <el-table-column prop="totalSalary" label="总工资" width="120" sortable>
