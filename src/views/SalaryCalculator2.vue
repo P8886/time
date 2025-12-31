@@ -11,9 +11,9 @@
       <!-- <el-button type="success" @click="calculateAllSalaries" :disabled="!hasData" :loading="calculating">
         <el-icon><Money /></el-icon> 计算所有工资
       </el-button> -->
-      <!-- <el-button type="info" @click="exportResults" :disabled="!hasCalculated">
+      <el-button type="info" @click="exportResults" :disabled="!hasCalculated">
         <el-icon><Download /></el-icon> 导出结果
-      </el-button> -->
+      </el-button>
     </div>
 
     <div class="stats-cards" v-if="hasData">
@@ -46,7 +46,7 @@
       >
         <el-table-column type="index" label="序号" width="80" align="center"></el-table-column>
         
-        <el-table-column prop="userName" label="姓名" width="120" sortable>
+        <el-table-column prop="userName" label="姓名" width="130" sortable>
           <template #default="scope">
             <div style="display: flex; align-items: center;">
               <el-avatar :size="32" style="margin-right: 10px; background: #3b82f6;">
@@ -57,7 +57,7 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="level" label="级别" width="100" sortable>
+        <el-table-column prop="level" label="级别" width="130" sortable>
           <template #default="scope">
             <el-tag :type="getLevelTagType(scope.row.level)" size="small">
               {{ scope.row.level }}
@@ -65,25 +65,25 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="baseSalary" label="底薪" width="100" sortable>
+        <el-table-column prop="baseSalary" label="底薪" width="130" sortable>
           <template #default="scope">
             <span style="color: #2563eb; font-weight: 500;">{{ scope.row.baseSalary.toLocaleString() }}</span>
           </template>
         </el-table-column>
 
-        <el-table-column prop="workHours" label="工时" width="100" sortable>
+        <el-table-column prop="workHours" label="工时" width="130" sortable>
           <template #default="scope">
             <span style="color: #059669; font-weight: 500;">{{ scope.row.workHours.toFixed(1) }}h</span>
           </template>
         </el-table-column>
 
-        <el-table-column prop="performanceBonus" label="绩效奖金" width="120" sortable>
+        <el-table-column prop="performanceBonus" label="绩效奖金" width="130" sortable>
           <template #default="scope">
             <span style="color: #dc2626; font-weight: 500;">{{ scope.row.performanceBonus.toLocaleString() }}</span>
           </template>
         </el-table-column>
 
-        <el-table-column prop="extraBonus" label="额外奖金" width="120" sortable>
+        <el-table-column prop="extraBonus" label="额外奖金" sortable>
           <template #default="scope">
             <div>
               <span style="color: #f59e0b; font-weight: 500;">{{ scope.row.extraBonus.toLocaleString() }}</span>
